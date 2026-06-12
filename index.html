@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>داستان پیامبر اکرم (ص)</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#0f0a1f;
+    --bg2:#1b1235;
+    --card:#211542;
+    --card-hover:#2a1c54;
+    --primary:#a855f7;
+    --primary2:#c084fc;
+    --text:#f3f0ff;
+    --text2:#cfc7e8;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Vazirmatn',sans-serif;
+    background:
+        radial-gradient(circle at top right,#4c1d95 0%,transparent 35%),
+        radial-gradient(circle at bottom left,#6d28d9 0%,transparent 30%),
+        linear-gradient(135deg,var(--bg),var(--bg2));
+    color:var(--text);
+    min-height:100vh;
+    padding:40px 20px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.header h1{
+    font-size:clamp(2rem,5vw,3rem);
+    font-weight:700;
+    color:white;
+    text-shadow:0 0 25px rgba(168,85,247,.5);
+}
+
+.header p{
+    margin-top:10px;
+    color:var(--text2);
+}
+
+.audio-list{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.audio-item{
+    background:rgba(33,21,66,.85);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(192,132,252,.15);
+    border-radius:20px;
+    padding:18px;
+    transition:.3s;
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.audio-item:hover{
+    transform:translateY(-4px);
+    background:var(--card-hover);
+    box-shadow:
+        0 15px 40px rgba(168,85,247,.25),
+        0 5px 20px rgba(0,0,0,.4);
+}
+
+.audio-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:12px;
+}
+
+.audio-number{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    font-size:18px;
+    background:linear-gradient(135deg,var(--primary),var(--primary2));
+    color:white;
+    box-shadow:0 0 20px rgba(168,85,247,.45);
+}
+
+.audio-title{
+    color:var(--text2);
+    font-size:15px;
+}
+
+audio{
+    width:100%;
+    border-radius:12px;
+}
+
+.footer{
+    text-align:center;
+    margin-top:35px;
+    color:#9f8bcf;
+    font-size:14px;
+}
+
+.glow{
+    position:fixed;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    background:#9333ea;
+    filter:blur(140px);
+    opacity:.15;
+    z-index:-1;
+}
+
+.glow1{
+    top:-100px;
+    right:-100px;
+}
+
+.glow2{
+    bottom:-100px;
+    left:-100px;
+}
+</style>
+</head>
+<body>
+
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+
+<div class="container">
+
+    <div class="header">
+        <h1>داستان پیامبر اکرم (ص)</h1>
+        <p>مجموعه کامل فایل‌های صوتی</p>
+    </div>
+
+    <div class="audio-list" id="audioList"></div>
+
+    <div class="footer">
+        ﷺ
+    </div>
+
+</div>
+
+<script>
+// نام فایل‌ها را به ترتیب وارد کنید
+const audioFiles = [
+    "101.mp3",
+    "102.mp3",
+    "103.mp3",
+    "104.mp3",
+    "105.mp3",
+    "106.mp3",
+    "107.mp3",
+    "108.mp3",
+    "109.mp3",
+    "110.mp3",
+    "111.mp3",
+    "112.mp3",
+    "113.mp3",
+    "114.mp3",
+    "115.mp3",
+    "116.mp3",
+    "117.mp3",
+    "118.mp3",
+
+];
+
+const container = document.getElementById("audioList");
+
+audioFiles.forEach((file, index) => {
+    container.innerHTML += `
+        <div class="audio-item">
+            <div class="audio-top">
+                <div class="audio-title">فایل صوتی</div>
+                <div class="audio-number">${index + 1}</div>
+            </div>
+
+            <audio controls preload="none">
+                <source src="mu/${file}" type="audio/mpeg">
+                مرورگر شما از پخش صوت پشتیبانی نمی‌کند.
+            </audio>
+        </div>
+    `;
+});
+</script>
+
+</body>
+</html>
