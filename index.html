@@ -1,211 +1,133 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>داستان پیامبر اکرم (ص)</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منوی آنلاین شیک</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-<style>
-:root{
-    --bg:#0f0a1f;
-    --bg2:#1b1235;
-    --card:#211542;
-    --card-hover:#2a1c54;
-    --primary:#a855f7;
-    --primary2:#c084fc;
-    --text:#f3f0ff;
-    --text2:#cfc7e8;
-}
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: #f8fafc;
+            background-image: radial-gradient(#e2e8f0 0.5px, transparent 0.5px);
+            background-size: 10px 10px;
+            color: #334155;
+            padding-bottom: 50px;
+        }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+        /* هدر شیشه‌ای بالای صفحه */
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
 
-body{
-    font-family:'Vazirmatn',sans-serif;
-    background:
-        radial-gradient(circle at top right,#4c1d95 0%,transparent 35%),
-        radial-gradient(circle at bottom left,#6d28d9 0%,transparent 30%),
-        linear-gradient(135deg,var(--bg),var(--bg2));
-    color:var(--text);
-    min-height:100vh;
-    padding:40px 20px;
-}
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: #0f172a;
+        }
 
-.container{
-    max-width:900px;
-    margin:auto;
-}
+        header p {
+            color: #64748b;
+            margin-top: 5px;
+            font-size: 1.1rem;
+        }
 
-.header{
-    text-align:center;
-    margin-bottom:40px;
-}
+        /* شبکه چیدمان محصولات */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 40px auto 0 auto;
+            padding: 0 20px;
+        }
 
-.header h1{
-    font-size:clamp(2rem,5vw,3rem);
-    font-weight:700;
-    color:white;
-    text-shadow:0 0 25px rgba(168,85,247,.5);
-}
+        /* کارت محصول */
+        .menu-item {
+            background-color: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid #edf2f7;
+            position: relative;
+        }
 
-.header p{
-    margin-top:10px;
-    color:var(--text2);
-}
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border-color: #cbd5e1;
+        }
 
-.audio-list{
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-}
+        .menu-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 4px solid #3b82f6; 
+        }
 
-.audio-item{
-    background:rgba(33,21,66,.85);
-    backdrop-filter:blur(12px);
-    border:1px solid rgba(192,132,252,.15);
-    border-radius:20px;
-    padding:18px;
-    transition:.3s;
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.35),
-        inset 0 1px 0 rgba(255,255,255,.05);
-}
-
-.audio-item:hover{
-    transform:translateY(-4px);
-    background:var(--card-hover);
-    box-shadow:
-        0 15px 40px rgba(168,85,247,.25),
-        0 5px 20px rgba(0,0,0,.4);
-}
-
-.audio-top{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:12px;
-}
-
-.audio-number{
-    width:48px;
-    height:48px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:700;
-    font-size:18px;
-    background:linear-gradient(135deg,var(--primary),var(--primary2));
-    color:white;
-    box-shadow:0 0 20px rgba(168,85,247,.45);
-}
-
-.audio-title{
-    color:var(--text2);
-    font-size:15px;
-}
-
-audio{
-    width:100%;
-    border-radius:12px;
-}
-
-.footer{
-    text-align:center;
-    margin-top:35px;
-    color:#9f8bcf;
-    font-size:14px;
-}
-
-.glow{
-    position:fixed;
-    width:300px;
-    height:300px;
-    border-radius:50%;
-    background:#9333ea;
-    filter:blur(140px);
-    opacity:.15;
-    z-index:-1;
-}
-
-.glow1{
-    top:-100px;
-    right:-100px;
-}
-
-.glow2{
-    bottom:-100px;
-    left:-100px;
-}
-</style>
+        /* نام محصول (بدون پسوند) */
+        .menu-item h3 {
+            padding: 20px 15px;
+            font-size: 1.4rem;
+            color: #1e293b;
+            font-weight: 700;
+            text-align: center;
+            background: linear-gradient(to right, #ffffff, #f1f5f9);
+            direction: ltr; /* برای اینکه شماره‌ها مثل #001 درست نمایش داده شوند */
+        }
+    </style>
 </head>
 <body>
 
-<div class="glow glow1"></div>
-<div class="glow glow2"></div>
+    <header>
+        <h1>فروشگاه</h1>
+        <p>لیست محصولات آنلاین</p>
+    </header>
 
-<div class="container">
+    <main class="menu-grid" id="menuContainer"></main>
 
-    <div class="header">
-        <h1>داستان پیامبر اکرم (ص)</h1>
-        <p>مجموعه کامل فایل‌های صوتی</p>
-    </div>
+    <script>
+        // تعداد کل محصولات شما (از 1 تا 70)
+        const totalProducts = 70;
+        const container = document.getElementById('menuContainer');
 
-    <div class="audio-list" id="audioList"></div>
+        for (let i = 1; i <= totalProducts; i++) {
+            // فرمت کردن عدد به صورت سه رقمی (مثلاً تبدیل 3 به 003)
+            const formattedNumber = String(i).padStart(3, '0');
+            
+            // ساختن نام فایل و نام نمایشی
+            const displayName = `#${formattedNumber}`;
+            const fileName = `%23${formattedNumber}.jpg`; // استفاده از %23 به جای # برای مرورگر
 
-    <div class="footer">
-        ﷺ
-    </div>
-
-</div>
-
-<script>
-// نام فایل‌ها را به ترتیب وارد کنید
-const audioFiles = [
-    "101.mp3",
-    "102.mp3",
-    "103.mp3",
-    "104.mp3",
-    "105.mp3",
-    "106.mp3",
-    "107.mp3",
-    "108.mp3",
-    "109.mp3",
-    "110.mp3",
-    "111.mp3",
-    "112.mp3",
-    "113.mp3",
-    "114.mp3",
-    "115.mp3",
-    "116.mp3",
-    "117.mp3",
-    "118.mp3",
-
-];
-
-const container = document.getElementById("audioList");
-
-audioFiles.forEach((file, index) => {
-    container.innerHTML += `
-        <div class="audio-item">
-            <div class="audio-top">
-                <div class="audio-title">فایل صوتی</div>
-                <div class="audio-number">${index + 1}</div>
-            </div>
-
-            <audio controls preload="none">
-                <source src="mu/${file}" type="audio/mpeg">
-                مرورگر شما از پخش صوت پشتیبانی نمی‌کند.
-            </audio>
-        </div>
-    `;
-});
-</script>
+            // تولید کد HTML برای هر کارت
+            const menuItem = document.createElement('div');
+            menuItem.className = 'menu-item';
+            menuItem.innerHTML = `
+                <img src="image/${fileName}" alt="${displayName}" onerror="this.style.display='none';">
+                <h3>${displayName}</h3>
+            `;
+            
+            container.appendChild(menuItem);
+        }
+    </script>
 
 </body>
 </html>
