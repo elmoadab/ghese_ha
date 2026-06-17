@@ -83,7 +83,7 @@
             border-bottom: 4px solid #3b82f6; 
         }
 
-        /* نام محصول (بدون پسوند) */
+        /* نام محصول (همراه با هشتگ برای زیبایی زنده) */
         .menu-item h3 {
             padding: 20px 15px;
             font-size: 1.4rem;
@@ -91,7 +91,7 @@
             font-weight: 700;
             text-align: center;
             background: linear-gradient(to right, #ffffff, #f1f5f9);
-            direction: ltr; /* برای اینکه شماره‌ها مثل #001 درست نمایش داده شوند */
+            direction: ltr; /* برای نمایش درست کاراکتر هشتگ کنار عدد */
         }
     </style>
 </head>
@@ -104,26 +104,26 @@
 
     <main class="menu-grid" id="menuContainer"></main>
 
-<script>
+    <script>
         // تعداد کل محصولات شما (از 1 تا 70)
         const totalProducts = 70;
         const container = document.getElementById('menuContainer');
 
         for (let i = 1; i <= totalProducts; i++) {
-            // فرمت کردن عدد به صورت سه رقمی (مثلاً 001)
+            // تبدیل عدد به فرمت سه رقمی (مثلاً 001، 002 و ...)
             const formattedNumber = String(i).padStart(3, '0');
             
-            const displayName = `#${formattedNumber}`;
+            // آدرس‌دهی مستقیم و ساده به پوشه تصاویر بر اساس نام‌های جدید شما
+            const imagePath = `image/${formattedNumber}.jpg`;
             
-            // روش استاندارد و امن برای آدرس‌دهی فایل‌های دارای هشتگ در گیت‌هاب
-            const rawPath = `image/#${formattedNumber}.jpg`;
-            const safeImagePath = rawPath.split('/').map(segment => encodeURIComponent(segment)).join('/');
+            // نامی که زیر عکس به کاربر نمایش داده می‌شود (مثلاً #001)
+            const displayName = `#${formattedNumber}`;
 
-            // تولید کد HTML
+            // تولید کارت محصول
             const menuItem = document.createElement('div');
             menuItem.className = 'menu-item';
             menuItem.innerHTML = `
-                <img src="${safeImagePath}" alt="${displayName}">
+                <img src="${imagePath}" alt="${displayName}">
                 <h3>${displayName}</h3>
             `;
             
